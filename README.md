@@ -73,7 +73,7 @@ React应用都是构建在组件上的，组件的2个核心一个是props属性
 
 
 ## JSX的语法规则
-1. js和html的搭配使用:js代码和html中需用变量用{}包含，遇到<>开头的用html规则解析，遇到{}开头用js规则解析
+1. js和html的搭配使用:js代码和html中需用变量用{}包含，遇到<>开头的用html规则解析，遇到{}开头用js规则解析,三种写法
 
 ```html
      render(){
@@ -83,7 +83,15 @@ React应用都是构建在组件上的，组件的2个核心一个是props属性
            names.map(function(name){
              return <h1>{name}</h1>
            })
-         }
+           /*
+           names.map( (name) => {
+            return <h1>{name}</h1>
+           })
+           */
+           /*
+           names.map( (name) => (<h1>{name}</h1>))
+           */
+         }
          </div>
        )
      }
