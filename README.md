@@ -1,6 +1,6 @@
 # React
 
-MVC框架
+MVC框架，采用JSX语法
 
 ##  核心思想
 
@@ -22,10 +22,11 @@ React应用都是构建在组件上的，组件的2个核心一个是props属性
 
 ```html
 <!-- 注意按以下顺序 -->
-  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
-  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
-  <!-- 不能太高，现在可用5.8.38版本 -->
-  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>      // react核心库
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>   //Dom操作
+   <!-- 不能太高，现在可用5.8.38版本 -->
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>   
+  //Browser.js的作用是将JSX语法转为Javascript语法.
 ```
 
 ## 基本结构
