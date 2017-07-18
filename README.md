@@ -70,3 +70,22 @@ React应用都是构建在组件上的，组件的2个核心一个是props属性
 1. 在return()里面不要用分号
 1.  ReactDOM.render中有2个参数，中间用逗号隔开
 *****
+
+
+## JSX的语法规则
+1. js和html的搭配使用:js代码和html中需用变量用{}包含，遇到<>开头的用html规则解析，遇到{}开头用js规则解析
+
+```html
+     render(){
+       return (
+         <div>
+         {
+           names.map(function(name){
+             return <h1>{name}</h1>
+           })
+         }
+         </div>
+       )
+     }
+```
+
