@@ -96,4 +96,19 @@ React应用都是构建在组件上的，组件的2个核心一个是props属性
        )
      }
 ```
+2. JSX允许直接在模板插入JS变量. 如果这个变量是一个数组, 则会展开这个数组的所有成员. 
 
+```html
+<script type="text/babel">
+
+      var arr = [
+        <h1>欢迎来到北京菜鸟在线</h1>,
+        <h2>我们现在学习的是React的语法知识.</h2>
+      ];
+
+   ReactDOM.render(
+     <div>{arr}</div>,
+     document.body
+   )
+</script>
+```
