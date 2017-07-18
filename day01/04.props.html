@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- 现有js才有dom.js -->
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <!-- 不能太高，现在可用5.8.38版本 -->
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <title>HTML5--React</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+  <script type="text/babel">
+
+  var CommentBox = React.createClass({
+    render: function () {
+      // 组件有且仅有一个元素，所以去掉div就会出错，可以有父子，多子，不能有兄弟
+      return(
+      <div>
+        <h1>Hello {this.props.name}</h1>
+        <h1>age: {this.props.age}</h1>
+      </div>
+    );
+
+    }
+
+  })
+   ReactDOM.render(
+     <CommentBox  name="John" age="18"/>,   //由于标签里面的内容都是字符串所以属性的值必须是字符串
+    document.getElementById('root')
+  );
+  </script>
+</html>
