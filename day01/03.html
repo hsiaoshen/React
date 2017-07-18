@@ -24,7 +24,7 @@
       return (     //js代码用{}包起来，但是里面不能加分号,不能在标签里面写注释
         <div>
         { names.map( function(name) {
-            return  <h1 key={name.toString()}>  Hello, {name}</h1>
+            return  <h1 key={name.toString()}>  Hello, {name}</h1>     //key={}解决不是字符串问题
           })
         }
         </div>
