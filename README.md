@@ -43,7 +43,7 @@ React应用都是构建在组件上的，组件的2个核心一个是props属性
  // 应用
  ReactDOM.render(
   <CommentBox />,    //调用组件
-  document.body
+  document.body       //要加入节点的位置
  )
 </script> 
 ```
@@ -56,4 +56,6 @@ React应用都是构建在组件上的，组件的2个核心一个是props属性
 1. render这个必须是这个单词不能更换
 1. 注释写在标签里面会显示出来
 1. 在return里面的js操作用{}包含起来，变量也用{变量名}
+1. 在return()里面不要用分号
+1.  ReactDOM.render中有2个参数，中间用逗号隔开
 *****
