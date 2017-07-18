@@ -112,3 +112,59 @@ React应用都是构建在组件上的，组件的2个核心一个是props属性
    )
 </script>
 ```
+3. 利用this.props传参数(添加组件属性, 需要注意就是class属性需要写成className, for属性需要写成htmlFor, 因为class和for是JavaScript的保留字.)
+```html
+<script type="text/babel">
+
+  var HMessage = React.createClass({
+    render: function(){
+      return (
+        <div>
+        <h1 key={}>{this.props.name}</h1>
+        <h1>{this.props.age}</h1>
+        </div>
+      );
+    }
+  })
+
+   ReactDOM.render(
+     <HMessage name="ZhaoSi" age="23" />,
+     document.body
+   );
+</script>
+
+```
+
+4. this.props.children
+
+****
+需要注意, this.props.children 的值有三种可能, 如果当前组件没有子节点, 它就是undefined; 如果有一个子节点, 数据类型是object; 如果有多少个子节点, 数据类型就是array. 所以, 处理this.props.children的时候要小心.
+
+React提供一个工具方法React.Children来处理this.props.children. 我们可以用React.Children.map来遍历子节点, 而不用担心this.props.children的数据类型是undefined还是object.
+****
+```html
+      <script type="text/babel">
+            var NoteList = React.createClass({
+                render: function(){
+                    return (
+                        <ol>
+                        {
+                            React.Children.map(this.props.children, function(child){
+                                return <li>{child}</li>
+                            })
+                        }
+                        </ol>
+                    );
+                }
+            });
+
+            ReactDOM.render(
+                <NoteList>
+                <span>hello</span>
+                <span>world</span>
+                </NoteList>,
+                document.body
+            );
+        </script>
+```
+
