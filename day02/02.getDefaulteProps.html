@@ -1,0 +1,32 @@
+<!-- 使用getDefaultProps,该属性是一个方法，return一个对象， -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <title>propTypes</title>
+</head>
+<body>
+  <div id="example">
+    <script type="text/babel">
+      // var data = "BeiJing Cainiao";
+      var Mytitle = React.createClass({
+        getDefaultProps: function () {
+          return  {title:"HTML5"}
+        },
+        render: function () {
+          return <h1>{this.props.title}</h1>
+        }
+      })
+      ReactDOM.render(
+        <Mytitle />,
+        document.getElementById('example')
+      )
+    </script>
+  </div>
+</body>
+</html>

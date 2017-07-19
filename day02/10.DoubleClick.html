@@ -1,0 +1,53 @@
+<!-- 双击换固定顺序颜色 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <title>模板</title>
+  <style media="screen">
+
+  .colorDiv{
+    width:200px;
+    height:200px;
+    margin: 300px auto;
+    background: yellow;
+    border: 1px solid gray;
+  }
+  </style>
+</head>
+<body>
+  <div id="example"></div>
+
+    <script type="text/babel">
+
+      var DoubleColor = React.createClass({
+        getInitialState: function(){
+          return {index:0};
+        },
+        dbclick: function(){
+          if(this.state.index < 6){
+              (this.state.index)++ ;
+              this.setState({index:this.state.index});
+          }else{
+              this.setState({index:0});
+          }
+        },
+        render: function(){
+          var color = ['red','blue','green','purple','pink','gray'];
+          var divStyle = {background:color[this.state.index]};
+          return <div className="colorDiv" onDoubleClick={this.dbclick} style={divStyle}></div>
+        }
+      })
+
+      ReactDOM.render(
+        <DoubleColor />,
+        document.getElementById('example')
+      )
+    </script>
+</body>
+</html>

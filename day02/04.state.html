@@ -1,0 +1,38 @@
+<!-- this.state改变会重新渲染,实现点赞和不点赞功能 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <title>propTypes</title>
+</head>
+<body>
+  <div id="example"></div>
+
+    <script type="text/babel">
+
+      var Praise = React.createClass({
+        getInitialState: function(){
+          return  { clickstate: false };
+        },
+        handleclick: function(){
+           this.setState({clickstate: !this.state.clickstate});
+        },
+        render: function(){
+          var text = this.state.clickstate ? '已赞' : '点赞' ;
+          var divStyle = this.state.clickstate ? {color:'rgb(111, 175, 25)'} : {color:'red'};
+          return <button onClick={this.handleclick} style={divStyle}>{text}</button>
+        }
+      })
+
+      ReactDOM.render(
+        <Praise />,
+        document.getElementById('example')
+      )
+    </script>
+</body>
+</html>
