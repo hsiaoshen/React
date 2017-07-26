@@ -1,0 +1,60 @@
+<!-- 实现了一个fadeIn和fadeOut的效果 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <title>模板</title>
+</head>
+<body>
+  <div id="example"></div>
+
+    <script type="text/babel">
+
+      var Hello = React.createClass({
+        getInitialState: function(){
+          return {
+            opacity : 1.0
+          }
+        },
+        componentDidMount : function(){
+          this.timer = setInterval(function(){
+            var opacity = this.state.opacity;
+            var stats = this.state.stats;
+            if(opacity <= 0.1){
+              stats = 1;
+            }
+            if(opacity >= 1){
+              stats = 0;
+            }
+            if(stats){
+              opacity += .05;
+            }else{
+              opacity -= .05;
+            }
+            this.setState({
+              opacity : opacity,
+              stats: stats
+            });
+          }.bind(this), 100);
+        },
+        render: function(){
+          return (
+            <div style={{opacity : this.state.opacity}}>
+            <h1>Hello {this.props.name}</h1>
+            </div>
+          )
+        }
+        })
+
+      ReactDOM.render(
+        <Hello />,
+        document.getElementById('example')
+      )
+    </script>
+</body>
+</html>

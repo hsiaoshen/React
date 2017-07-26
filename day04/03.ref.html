@@ -1,0 +1,43 @@
+<!-- ref 只有在真实的插入文档后才能获得值 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <title>模板</title>
+</head>
+<body>
+  <div id="example"></div>
+
+    <script type="text/babel">
+
+      class Input extends React.Component{
+
+        handleclick(){
+          console.log(this);
+           this.refs.myName.focus();
+        }
+
+        render(){
+          return(
+            <div>
+            <input type="text" ref="myName" />
+            <input type="text" placeholder="aaa" onClick={this.handleclick.bind(this)}/>
+            <hr />
+            //Cannot read property 'refs' of null 出现这问题就是没绑定，此时的问题是this为null 。。。要这写: this.handleclick.bind(this)
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(
+        <Input />,
+        document.getElementById('example')
+      )
+    </script>
+</body>
+</html>

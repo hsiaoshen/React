@@ -1,4 +1,4 @@
-<!-- react魔板 -->
+<!-- react es6魔板 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,17 +15,19 @@
 
     <script type="text/babel">
 
-      var Input = React.createClass({
-        getInitialState: function(){
-          return {}
-        },
-        handleclick: function(){
+      class Input extends React.Component{
+         constructor(props){
+           susper(props);
+         }
+
+        handleclick(){
            this.setState({});
-        },
-        render: function(){
+        }
+
+        render(){
           return(html)
         }
-      })
+      }
 
       ReactDOM.render(
         <Input />,

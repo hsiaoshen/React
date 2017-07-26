@@ -1,0 +1,52 @@
+<!-- 实现单击和双击计数器，并且互不干扰 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <title>模板</title>
+</head>
+<body>
+  <div id="example"></div>
+
+    <script type="text/babel">
+            var timer;
+      var ClickCount = React.createClass({
+
+        getInitialState: function(){
+          return {ck : 0 , dbck : 0 }
+        },
+        clickhandle:function(){
+          console.log(1);
+          clearTimeout(timer);
+           timer = setTimeout(this.clickhandle1,500);
+        },
+        clickhandle1 : function(){
+          this.setState({ck: (this.state.ck + 1)});
+        },
+        dbclickhandle:function(){
+          clearTimeout(timer);
+          this.setState({dbck : (this.state.dbck + 1)});
+        },
+        render: function(){
+          return (
+              <div>
+                <h3>单击次数:{this.state.ck}</h3>
+                <h3>双击次数：{this.state.dbck}</h3>
+                <button onClick={this.clickhandle} onDoubleClick={this.dbclickhandle}>点击</button>
+              </div>
+          )
+        }
+      })
+
+      ReactDOM.render(
+        <ClickCount />,
+        document.getElementById('example')
+      )
+    </script>
+</body>
+</html>

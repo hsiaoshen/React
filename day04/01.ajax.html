@@ -1,0 +1,52 @@
+<!-- 组件的数据来源通常是ajax请求从服务器获取 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <title>模板</title>
+</head>
+<body>
+  <div id="example"></div>
+
+    <script type="text/babel">
+
+      // 现在是ES5风格
+      var UserGist = React.createClass({
+        getInitialState: function(){
+          return {username:'', lastGistUrl: ''}
+        },
+        componentDidMount: function(){
+          // $.get(this.props.source, function(result){
+          $.get(this.props.source, (result) =>{
+            // console.log(result);
+            var lastGist = result[0];
+            // console.log(lastGist);
+              this.setState({
+                username: lastGist.owner.login,
+                lastGistUrl: lastGist.owner.html_url
+              })
+          // }.bind(this));  //如果出现不是函数问题就是忘记绑定了，让该函数绑定在组件上,如果使用箭头函数就是指向自己不需要绑定
+        })
+        },
+        render: function(){
+          return(
+            <div>
+            {this.state.username}‘s last gist is <a href={this.state.lastGistUrl}>here</a>.
+            </div>
+          )
+        }
+      })
+
+      ReactDOM.render(
+        <UserGist  source="https://api.github.com/users/octocat/gists"/>,
+        document.getElementById('example')
+      )
+    </script>
+</body>
+</html>

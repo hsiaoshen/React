@@ -1,0 +1,42 @@
+<!-- 表单与事件 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <title>模板</title>
+</head>
+<body>
+  <div id="example"></div>
+
+    <script type="text/babel">
+
+      var FormInput = React.createClass({
+        submitHandle: function(event){
+          console.log(event.cancelable);   //true,说明浏览器的对该事件有默认行为的
+            event.preventDefault();  //只有event.cancelable为true才有效
+            var helloTo = ReactDOM.findDOMNode(this.refs.helloTo).value;
+            alert(helloTo);
+        },
+        render: function(){
+          return (
+            <form  onSubmit={this.submitHandle}>
+                <input type="text" ref="helloTo" defaultValue="Hello"/>
+                <br/>
+                <button type="submit">Submit</button>
+            </form>
+          )
+        }
+      })
+
+      ReactDOM.render(
+        <FormInput ></FormInput>,
+        document.getElementById('example')
+      )
+    </script>
+</body>
+</html>

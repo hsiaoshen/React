@@ -1,0 +1,70 @@
+<!-- form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+  <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <title>模板</title>
+</head>
+<body>
+  <div id="example"></div>
+
+  <script type="text/babel">
+
+    class FormInput extends React.Component{   //和createClass不同，直接写花括号，没有小括号
+      constructor(props){
+        super(props);
+        this.state = {n:null, number:0}
+      }
+
+    componentWillMount(){
+      this.state.n = "abcd";
+    }
+
+     componentDidMount(){
+        setInterval(()=>{
+         this.setState({number: this.state.number + 1});
+       }, 1000);
+     }
+
+     componentWillUpdate(){
+       console.log("run componentWillUpdate");
+     }
+
+     componentDidUpdate(){
+       setTimeout(()=>{
+         console.log("run did update");
+       }, 2000);
+     }
+
+     submitHandler(event){
+             event.preventDefault();
+             console.log(this.refs.name.value);
+             console.log(this.refs.passwd.value);
+             this.setState({n: this.refs.name.value});
+     }
+
+     render(){
+           return (<div>
+           <label htmlFor="name">name:</label>
+           <input type="text" ref="name" id="name"/>
+           <br />
+           <label htmlFor="passwd">Pawd:</label>
+           <input type="password" ref="passwd" id="passwd"/>
+            <button type="submit" onClick={this.submitHandler.bind(this)}>Submit</button>
+           <h1>{this.state.n}</h1>
+           <br/>
+           <h1>number: {this.state.number}</h1>
+           </div>);
+         }
+       };
+       ReactDOM.render(<FormInput></FormInput>, document.getElementById('example'));
+
+       </script>
+</body>
+</html>
